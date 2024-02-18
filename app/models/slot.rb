@@ -8,5 +8,5 @@ class Slot < ApplicationRecord
   validates :note, length: { maximum: 255 }, allow_blank: true
   validates :rate, inclusion: { in: 1..5, allow_nil: true }
 
-  scope :available, -> { where(student: nil) }
+  scope :available, -> { where('start_time > ?', Time.now.utc).where(student: nil) }
 end
