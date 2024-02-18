@@ -18,5 +18,29 @@ module SlotManagement
 
       Slot.create!(start_time:, end_time:, coach:)
     end
+
+    def update_slot(id, student_id = nil, rate = nil, note = nil)
+      begin
+        slot = Slot.find(id)
+      rescue ActiveRecord::RecordNotFound
+        raise StandardError, 'Slot not found'
+      end
+
+      if student_id.present?
+        begin
+          student = Student.find(student_id)
+          slot.student = student
+        rescue ActiveRecord::RecordNotFound
+          raise StandardError, 'Student not found'
+        end
+      end
+
+      slot.rate = rate if rate.present?
+      slot.note = note if note.present?
+
+      slot.save!
+
+      slot
+    end
   end
 end
