@@ -1,0 +1,20 @@
+AllCops:
+  Exclude:
+    - bin/**/*
+    - tmp/**/*
+    - db/schema.db
+
+Layout/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
