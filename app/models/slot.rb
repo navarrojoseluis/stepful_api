@@ -7,4 +7,6 @@ class Slot < ApplicationRecord
   validates :end_time, presence: true
   validates :note, length: { maximum: 255 }, allow_blank: true
   validates :rate, inclusion: { in: 1..5, allow_nil: true }
+
+  scope :available, -> { where(student: nil) }
 end
